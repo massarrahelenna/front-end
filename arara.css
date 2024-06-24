@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo</title>
+  <link rel="stylesheet" href="style.css"> 
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #FFFAF0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden; /* Importante para que as flores não criem scroll na página */
+    }
+    .container {
+      padding: 20px;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #DA70D6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .link-item {
+      margin: 0 15px;
+    }
+    .link-item a {
+      display: block;
+      padding: 10px 20px;
+      background-color: #DA70D6;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .lotus {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-image: url('flor\ de\ lotus\ \(1\).png'); /* Substitua pelo link da imagem da flor de lótus */
+      background-size: cover;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: float 10s linear infinite;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+      }
+      100% {
+        transform: translateY(-100vh) translateX(10vw);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bem-vindo ao Jogo!</h1>
+    <button class="btn" onclick="jogar()">Jogar</button>
+    <section class="links">
+      <div class="link-item">
+        <a href="https://replit.com/join/dibeiewpzx-helennamassarra" target="_blank">BlackJack</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function jogar() {
+      // Aqui você pode adicionar a lógica do jogo
+      alert("O jogo está prestes a começar!");
+    }
+
+    // Função para criar flores de lótus flutuantes
+    function createLotus() {
+      const numLotus = 5; // Número de flores criadas a cada intervalo
+      for (let i = 0; i < numLotus; i++) {
+        const lotus = document.createElement('div');
+        lotus.classList.add('lotus');
+        lotus.style.left = Math.random() * 100 + 'vw';
+        lotus.style.animationDuration = Math.random() * 5 + 5 + 's';
+        document.body.appendChild(lotus);
+
+        setTimeout(() => {
+          lotus.remove();
+        }, 10000);
+      }
+    }
+
+    // Criar várias flores de lótus a cada intervalo de tempo
+    setInterval(createLotus, 1000);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.link-item a');
+      links.forEach(link => {
+        link.addEventListener('click', (event) => {
+          alert('You clicked a link!');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
